@@ -1,0 +1,7 @@
+Drugs:
+   Cocaine:
+      sell-cost: 800
+      buy-cost: 1000
+      displayname: "&cCocaine"
+      itemID: 353
+      can-craft: False
