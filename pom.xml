@@ -51,7 +51,7 @@
     <distributionManagement>
         <snapshotRepository>
             <id>nexus-snapshots</id>
-            <url>http://199.255.159.82:5959/nexus/content/repositories/snapshots</url>
+            <url>http://199.255.159.82:5959/repository/minepos/</url>
         </snapshotRepository>
     </distributionManagement>
 
