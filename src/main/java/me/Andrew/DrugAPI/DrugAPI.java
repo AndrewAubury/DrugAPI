@@ -17,13 +17,14 @@ public class DrugAPI {
 		setupDrugs();
 	}
 
+
 	public static DrugAPI getInstance() {
 		if (instance == null) {
 			instance = new DrugAPI();
 		}
 		return instance;
 	}
-	public void setupDrugs(){
+	private void setupDrugs(){
 		for(String drug : getDrugList()){
 			if(!drugStore.containsKey(drug)){
 				 ConfigurationSection drugConfig = MA.getConfig().getConfigurationSection("Drugs."+drug);
@@ -33,9 +34,13 @@ public class DrugAPI {
 				 String displayName = drugConfig.getString("displayname");
 				 int itemID = drugConfig.getInt("itemID");
 				 boolean canCraft = drugConfig.getBoolean("can-craft");
-				 drugStore.put(drug, new Drug(name,itemID,displayName,sellCost,buyCost,canCraft));
+                new Drug(name,itemID,displayName,sellCost,buyCost,canCraft);
 			}
 		}
+	}
+
+	public void addDrug(String name, Drug drug){
+		drugStore.put(name,drug);
 	}
 	public ArrayList<String> getDrugList(){
 		Set<String> values = MA.getConfig().getConfigurationSection("Drugs").getKeys(false);

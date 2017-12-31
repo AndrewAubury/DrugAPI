@@ -6,7 +6,9 @@ import org.bukkit.entity.Player;
  * Created by Andrew on 31/12/2017.
  */
 public class DrugAction {
-    public void run(Player p){
+
+    public void run(Player p,Drug drug){
 
     }
+
 }

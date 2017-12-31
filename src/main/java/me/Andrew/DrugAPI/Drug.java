@@ -15,26 +15,20 @@ public class Drug {
 	private String displayName;
 	private int itemID;
 	private boolean canCraft;
-	private HashMap<DrugAction,String> eventList;
 
 	public Drug(String name,int itemID,String displayName,double sellCost,double buyCost,boolean canCraft){
-		eventList = new HashMap<>();
 		setName(name);
 		setItemID(itemID);
 		setDisplayName(displayName);
 		setSellCost(sellCost);
 		setBuyCost(buyCost);
 		setCanCraft(canCraft);
+		DrugAPI.getInstance().addDrug(name,this);
 	}
-	public void addActionHandler(String name, DrugAction action){
-		eventList.put(action,name);
-	}
+
 	public void runAction(String name,Player p){
-		for(DrugAction action : eventList.keySet()){
-			if(eventList.get(action).equalsIgnoreCase(name)){
-				action.run(p);
-			}
-		}
+		DrugEvent event = new DrugEvent(p,this,name);
+		DrugAPI.getInstance().MA.getServer().getPluginManager().callEvent(event);
 	}
 	public HashMap<String,Object> getInfo(){
 		HashMap<String,Object> info = new HashMap<String,Object>();
