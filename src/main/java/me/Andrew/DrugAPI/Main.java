@@ -13,6 +13,7 @@ public class Main extends JavaPlugin {
 		ma = this;
 		saveDefaultConfig();
 		ma.getServer().getLogger().info("This is just the API. Drugs have no function with out addons.");
+		ma.getServer().getLogger().info("This is just the API. Drugs have no function with out addons.");
 		new DrugAPI();
 	}
 
