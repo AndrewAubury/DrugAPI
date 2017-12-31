@@ -12,6 +12,7 @@ public class Main extends JavaPlugin {
 	public void onEnable() {
 		ma = this;
 		saveDefaultConfig();
+		ma.getServer().getLogger().info("This is just the API. Drugs have no function with out addons.");
 		new DrugAPI();
 	}
 
