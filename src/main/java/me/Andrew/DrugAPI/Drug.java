@@ -1,8 +1,10 @@
 package me.Andrew.DrugAPI;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -13,14 +15,26 @@ public class Drug {
 	private String displayName;
 	private int itemID;
 	private boolean canCraft;
-	
+	private HashMap<DrugAction,String> eventList;
+
 	public Drug(String name,int itemID,String displayName,double sellCost,double buyCost,boolean canCraft){
+		eventList = new HashMap<>();
 		setName(name);
 		setItemID(itemID);
 		setDisplayName(displayName);
 		setSellCost(sellCost);
 		setBuyCost(buyCost);
 		setCanCraft(canCraft);
+	}
+	public void addActionHandler(String name, DrugAction action){
+		eventList.put(action,name);
+	}
+	public void runAction(String name,Player p){
+		for(DrugAction action : eventList.keySet()){
+			if(eventList.get(action).equalsIgnoreCase(name)){
+				action.run(p);
+			}
+		}
 	}
 	public HashMap<String,Object> getInfo(){
 		HashMap<String,Object> info = new HashMap<String,Object>();

@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Set;
 
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.inventory.ItemStack;
 
 public class DrugAPI {
 	Main MA;
@@ -44,6 +45,14 @@ public class DrugAPI {
 		}
 		
 		return drugs;
+	}
+	public Drug isDrug(ItemStack is){
+		for(Drug drug : drugStore.values()){
+			if(drug.getDrugItem().isSimilar(is)){
+				return drug;
+			}
+		}
+		return null;
 	}
 	public Drug getDrug(String name){
 		return drugStore.get(name);
