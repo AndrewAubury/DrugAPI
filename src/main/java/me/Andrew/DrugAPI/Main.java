@@ -11,7 +11,7 @@ public class Main extends JavaPlugin {
 
 	public void onEnable() {
 		ma = this;
-		getConfig();
+		saveDefaultConfig();
 		new DrugAPI();
 	}
 
