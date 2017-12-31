@@ -23,7 +23,7 @@ public class Drug {
 		setSellCost(sellCost);
 		setBuyCost(buyCost);
 		setCanCraft(canCraft);
-		DrugAPI.getInstance().addDrug(name,this);
+
 	}
 
 	public void runAction(String name,Player p){

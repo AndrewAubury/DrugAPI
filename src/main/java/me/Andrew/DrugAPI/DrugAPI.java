@@ -10,10 +10,12 @@ import org.bukkit.inventory.ItemStack;
 public class DrugAPI {
 	Main MA;
 	private static DrugAPI instance = null;
-	private HashMap<String, Drug> drugStore = new HashMap<String, Drug>();
+	private HashMap<String, Drug> drugStore;
 	
 	protected DrugAPI() {
 		MA = Main.getInstance();
+		instance = this;
+        drugStore = new HashMap<String, Drug>();
 		setupDrugs();
 	}
 
@@ -34,7 +36,7 @@ public class DrugAPI {
 				 String displayName = drugConfig.getString("displayname");
 				 int itemID = drugConfig.getInt("itemID");
 				 boolean canCraft = drugConfig.getBoolean("can-craft");
-                new Drug(name,itemID,displayName,sellCost,buyCost,canCraft);
+                DrugAPI.getInstance().addDrug(name,new Drug(name,itemID,displayName,sellCost,buyCost,canCraft));
 			}
 		}
 	}
