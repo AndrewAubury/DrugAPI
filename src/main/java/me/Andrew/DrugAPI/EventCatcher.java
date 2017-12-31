@@ -11,7 +11,9 @@ public class EventCatcher implements Listener {
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent e){
         Drug d = DrugAPI.getInstance().isDrug(e.getItem());
-        DrugInteractEvent event = new DrugInteractEvent(e.getPlayer(),d,e.getAction(),e);
-        Main.getInstance().getServer().getPluginManager().callEvent(event);
+        if(d != null){
+            DrugInteractEvent event = new DrugInteractEvent(e.getPlayer(),d,e.getAction(),e);
+            Main.getInstance().getServer().getPluginManager().callEvent(event);
+        }
     }
 }
